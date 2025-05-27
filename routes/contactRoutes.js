@@ -20,7 +20,12 @@ router.route("/:id").put((req, res) => {
  res.status(200).json({ message: `Update contact for ${req.params.id}` });
 })
 
+router.route("/:id").delete((req, res) => {
+ res.status(200).json({ message: `Delete contact for ${req.params.id}` });
+})
+
+//route for get individual contact 
 router.route("/:id").get((req, res) => {
- res.status(200).json({message: `Delete contact for ${req.params.id}`}) 
+ res.status(200).json({ message: `Delete contact for ${req.params.id}` });
 })
 module.exports = router;
