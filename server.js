@@ -6,9 +6,8 @@ const port = process.env.PORT || 5000;
 app = express();
 
 
-app.get("/msm", (req, res) => {
- res.json({ message: "get all contacts" })
-})
+
+//app.get()
 
 app.listen(port, () => {
  console.log(`Server running on port ${port}`);
