@@ -14,15 +14,9 @@ const router = express.Router();
 //req.params => route parameters(/user/:id)
 //req.query => query string parameter(?name=morris)
 //req.body => body of a post/put request(usually parsed via middleware like express.js)
-router.route("/").get(getContacts);
 
-router.route("/").post(createContact)
-
-router.route("/:id").put(updateContact)
-
-router.route("/:id").delete(deleteContact)
-//route for get individual contact 
-router.route("/:id").get(getContact);
+router.route("/").get(getContacts).post(createContact);
+router.route("/:id").put(updateContact).delete(deleteContact).get(getContact)
 
 
 module.exports = router;
