@@ -9,6 +9,7 @@ const port = process.env.PORT || 5000;
 
 app.use("/msm", require("./routes/contactRoutes"));
 
+
 app.listen(port, () => {
  console.log(`Server is running on port ${port}`); 
 })
