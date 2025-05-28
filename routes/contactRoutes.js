@@ -1,18 +1,12 @@
 const express = require("express");
-const { getContact } = require("../controllers/contactController");
+const { getContact, createContact, updateContact, deleteContact, getContacts } = require("../controllers/contactController");
 
 const router = express.Router();
-
 
 //get
 //post
 //delete
 //put (update)
-router.route("/").get(getContact);
-
-router.route("/").post()
-
-router.route("/:id").put()
 
 //common properties 
 //req.url => the url being requested
@@ -20,11 +14,15 @@ router.route("/:id").put()
 //req.params => route parameters(/user/:id)
 //req.query => query string parameter(?name=morris)
 //req.body => body of a post/put request(usually parsed via middleware like express.js)
+router.route("/").get(getContacts);
 
-router.route("/:id").delete()
+router.route("/").post(createContact)
 
+router.route("/:id").put(updateContact)
+
+router.route("/:id").delete(deleteContact)
 //route for get individual contact 
-router.route("/:id").get((req, res) => {
- res.status(200).json({ message: `Delete contact for ${req.params.id}` });
-})
+router.route("/:id").get(getContact);
+
+
 module.exports = router;

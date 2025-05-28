@@ -36,4 +36,4 @@ const deleteContact = (req, res) => {
 
 
 
-module.exports = { getContact, createContact, updateContact };
+module.exports = { getContacts, getContact, createContact, updateContact, deleteContact };
