@@ -27,7 +27,7 @@ router.route("/:id").put((req, res) => {
 //req.query => query string parameter(?name=morris)
 //req.body => body of a post/put request(usually parsed via middleware like express.js)
 
-router.route("/").delete((req, res) => {
+router.route("/:id").delete((req, res) => {
  res.status(200).json({ message: `deleted contact info ${req.params.id}` });
 })
 
