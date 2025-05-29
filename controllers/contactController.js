@@ -33,8 +33,8 @@ const createContact = asyncHandler(async (req, res) => {
   throw new Error("please enter all the fields");
  }
  const contact = await Contact.create({
-  name, 
-  email, 
+  name,
+  email,
   phone,
  })
  res.status(201).json(contact);
@@ -44,15 +44,21 @@ const createContact = asyncHandler(async (req, res) => {
 //@route PUT /api/contacts/:id
 //@access public
 const updateContact = asyncHandler(async (req, res) => {
- 
+
  const contact = await Contact.findById(req.params.id);
  if (!contact) {
   res.status(404);
   throw new Error("Contact not found");
  }
 
- res.status(200).json({ message: `updated contact for ${req.params.id}` });  
-})
+ const updatedContact = await Contact.findByIdAndUpdate(
+  req.params.id,
+  req.body,
+  { new: true }
+ );
+
+ res.status(200).json(updatedContact);
+});
 
 //@desc delete contact
 //@route DELETE /api/contact/:id
