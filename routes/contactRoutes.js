@@ -16,7 +16,7 @@ const router = express.Router();
 //req.body => body of a post/put request(usually parsed via middleware like express.js)
 
 router.route("/").get(getContacts).post(createContact);
-router.route("/:id").put(updateContact).delete(deleteContact).get(getContact)
+router.route("/:id").put(updateContact).delete(deleteContact).get(getContact);
 
 
 module.exports = router;

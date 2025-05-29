@@ -22,7 +22,7 @@ const getContact = asyncHandler(async (req, res) => {
 
 
 //@desc create contact 
-//@route POST /api/contact
+//@route POST /api/contacts
 //@access public
 const createContact = asyncHandler(async (req, res) => {
  console.log("The request body is: ", req.body);
@@ -61,10 +61,16 @@ const updateContact = asyncHandler(async (req, res) => {
 });
 
 //@desc delete contact
-//@route DELETE /api/contact/:id
+//@route DELETE /api/contacts/:id
 //@access public 
-const deleteContact = asyncHandler((req, res) => {
- res.status(200).json({ message: `deleted contact info ${req.params.id}` });
+const deleteContact = asyncHandler(async (req, res) => {
+ const contact = await Contact.findById(req.params.id);
+ if (!contact) {
+  res.status(404);
+  throw new Error("Contact not found");
+ }
+ await Contact.deleteOne();
+ res.status(200).json(contact);
 })
 
 
