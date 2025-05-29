@@ -19,7 +19,7 @@ const getContact = asyncHandler(async (req, res) => {
 //@desc create contact 
 //@route POST /api/contact
 //@access public
-const createContact = asyncHandler((req, res) => {
+const createContact = asyncHandler(async (req, res) => {
  console.log("The request body is: ", req.body);
  const { name, email, phone } = req.body;
 
@@ -27,7 +27,12 @@ const createContact = asyncHandler((req, res) => {
   res.status(400);
   throw new Error("please enter all the fields");
  }
- res.status(201).json({ message: "create contact" });
+ const contact = await Contact.create({
+  name, 
+  email, 
+  phone,
+ })
+ res.status(201).json(contact);
 })
 
 //@desc update contact
